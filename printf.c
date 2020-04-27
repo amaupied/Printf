@@ -59,7 +59,10 @@ char		*strjoin_flag(char *buffer, t_flag *flag)
 {
 	char	*new;
 
-	new = ft_strdup(flag->str);
+	if (*flag->str)
+		new = ft_strdup(flag->str);
+	else
+		return (ft_strdup(buffer));
 	new = strjoin_options(new, flag);
 	if (!is_flag(flag->conv) || flag->conv == 0)
 		new = ft_strdup_free(buffer, new);
@@ -92,7 +95,8 @@ int			printage(char *buffer)
 			j++;
 		}
 	}
-	ft_strdel(&buffer);
+	if (buffer)
+		ft_strdel(&buffer);
 	return (i);
 }
 

@@ -115,9 +115,9 @@ t_flag		*convert_flag(char *str, va_list list)
 		i = i + (is_option(str[i]) ? assign_flag(flag, str + i) : 1);
 	flag->lenght = i;
 	flag->conv = str[i];
-	if (ft_strchr("diouxX", str[i]))
+	if (str[i] && ft_strchr("diouxX", str[i]))
 		flag->str = assign_dioux(flag, list);
-	else if (ft_strchr("csp", str[i]))
+	else if (str[i] && ft_strchr("csp", str[i]))
 		flag->str = assign_csp(flag, list);
 	else if (str[i] == 'f')
 		flag->str = assign_float(flag, list);
