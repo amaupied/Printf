@@ -46,10 +46,10 @@ char		*strjoin_options(char *new, t_flag *flag)
 	if (flag->conv == 'o' && flag->diez && !(flag->precis > 1) && (xnotnull(new)
 	|| flag->precis == 1))
 		new = ft_joinzeros(new, ft_strlen(new) + 1);
-	if (flag->width >= (int)ft_strlen(new) && flag->lefted && flag->conv != '%')
+	if (flag->width >= (int)ft_strlen(new) && flag->lefted)
 		new = ft_strjoinleft(new, flag->width + ((flag->conv == 'c'
 		&& !ft_strcmp(new, "^@")) ? 1 : 0));
-	else if (flag->width > 0 && flag->conv != '%')
+	else if (flag->width > 0)
 		new = ft_strjoinright(new, flag->width + ((flag->conv == 'c'
 		&& !ft_strcmp(new, "^@")) ? 1 : 0));
 	return (new);
